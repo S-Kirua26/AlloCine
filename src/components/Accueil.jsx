@@ -5,8 +5,13 @@ import Formulaire from './Formulaire';
 
 export default class Accueil extends Component{
 
-    state = {
-        bool : true
+    constructor(props){
+        super(props);
+        this.state = ({
+            array : [],
+            bool : true,
+        })
+        console.log(this.state.array)
     }
 
     cliqueAdd = (items) => { // permet d'ajouter un ou plusieurs films en favorie
@@ -19,6 +24,14 @@ export default class Accueil extends Component{
             storage : array,
         })
         
+    }
+
+    test = (arraySearch) => {
+        this.setState({
+            values : arraySearch,
+            bool : false  
+        })
+        console.log(this.state.array)
     }
 
     cliqueRemove = () => { // permet de retirer un ou plusieurs films des favories
@@ -51,7 +64,7 @@ export default class Accueil extends Component{
         return(
             <React.Fragment>
                 <div>
-                    <Formulaire/>
+                    <Formulaire test={this.test}/>
                 </div>
                 <div className="text-center colonne margin">
                     <h1 className="text-white">Accueil</h1>
