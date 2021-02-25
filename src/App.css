@@ -24,8 +24,24 @@ body{
   background-color: #ac9e9e;
 }
 
+.flex{
+  flex : 2;
+}
+
 .flexdouble{
   flex : 3;
+}
+
+.turquoise{
+  color: #3ce5eb;
+}
+
+.borderWhite{
+  border: 2px solid white;
+}
+
+.orange{
+  color: #ee843e;
 }
 
 .colonne{

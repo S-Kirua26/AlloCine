@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Film from './Films/Film';
 import { apieMovie } from '../api/apiMovie';
 import Formulaire from './Formulaire';
+import Pagination from "react-js-pagination";
 
 export default class Accueil extends Component{
 
@@ -10,8 +11,14 @@ export default class Accueil extends Component{
         this.state = ({
             array : [],
             bool : true,
+            activePage : 1,
         })
         console.log(this.state.array)
+    }
+
+    handlePageChange(pageNumber) {
+        console.log(`active page is ${pageNumber}`);
+        this.setState({activePage: pageNumber});
     }
 
     cliqueAdd = (items) => { // permet d'ajouter un ou plusieurs films en favorie
@@ -26,7 +33,7 @@ export default class Accueil extends Component{
         
     }
 
-    test = (arraySearch) => {
+    recherche = (arraySearch) => {
         this.setState({
             values : arraySearch,
             bool : false  
@@ -64,7 +71,7 @@ export default class Accueil extends Component{
         return(
             <React.Fragment>
                 <div>
-                    <Formulaire test={this.test}/>
+                    <Formulaire recherche={this.recherche}/>
                 </div>
                 <div className="text-center colonne margin">
                     <h1 className="text-white">Accueil</h1>
@@ -81,6 +88,9 @@ export default class Accueil extends Component{
                         }
                     </div>
                 </div> 
+                <div className="center">
+                    <Pagination activePage={this.state.activePage} itemsCountPerPage={20} totalItemsCount={450} pageRangeDisplayed={5} onChange={this.handlePageChange.bind(this)}/>
+                </div>
             </React.Fragment>
         )
     }

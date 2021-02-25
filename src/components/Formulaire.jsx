@@ -22,7 +22,7 @@ export default class Formulaire extends React.Component{
             }
         }
         ).then(response => {
-            this.props.test(response.data.results)
+            this.props.recherche(response.data.results)
         })
     }
 
@@ -37,8 +37,8 @@ export default class Formulaire extends React.Component{
                         <Field className='flexdouble' type='search' name='query' placeholder="Votre Recherche"/>
                         <div className="miniEspace"></div>
                         <Field as = "select" name="language">
-                            <option value="fr">Francais</option>
                             <option value="en-US">Anglais</option>
+                            <option value="fr">Français</option>
                         </Field>
                         <div className="miniEspace"></div>
                         <button type="submit" className=" btn btn-warning">Rechercher</button>
